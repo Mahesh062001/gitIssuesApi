@@ -1,13 +1,16 @@
+// src/app.js
+
 require("dotenv").config();
 const express = require("express");
 const app = express();
 const PORT = 6000;
-
+const passport = require("passport");
+require("./config/passport");
 const mongoose = require("mongoose");
 const IssueService = require("./service/issueService");
 const issueController = require("./controller/issueController");
 const errorHandler = require("./middleware/errorHandler");
-const routes = require("./routes/routes");
+const issuesRoutes = require("./routes/issuesRoutes");
 const dbSECRETKey = process.env.dbSECRETKey;
 mongoose.connect(`${dbSECRETKey}`, {
   useNewUrlParser: true,
@@ -21,8 +24,8 @@ db.once("open", () => {
 });
 
 app.use(express.json());
-
-app.use(routes);
+app.use(passport.initialize());
+app.use(issuesRoutes);
 
 app.use(errorHandler);
 
