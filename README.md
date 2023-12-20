@@ -4,7 +4,7 @@
 
  1. Clone the repository:
   
-  - git clone https://github.com/your-username/github-issues-sync.git
+  - git clone `https://github.com/Mahesh062001/gitIssuesApi.git`
   
  2. Install dependencies:
 
